@@ -1,0 +1,10 @@
+{
+  "name": "M Kirana",
+  "short_name": "M Kirana",
+  "description": "M Kirana - किराना दुकान के लिए बिल और उधारी प्रबंधन ऐप",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0d6efd",
+  "orientation": "portrait"
+}
