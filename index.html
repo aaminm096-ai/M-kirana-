@@ -305,4 +305,11 @@ if ('serviceWorker' in navigator) { window.addEventListener('load', () => naviga
 let deferredInstallPrompt;
 window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredInstallPrompt=e; });
 </script>
+  <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js");
+  });
+}
+  </script>
 </body></html>
