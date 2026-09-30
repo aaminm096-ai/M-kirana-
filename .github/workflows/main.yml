@@ -17,19 +17,24 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v4
-
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli
 
-      - name: Build Android APK
+      - name: Create TWA project
         run: |
+          mkdir twa
+          cd twa
           bubblewrap init --manifest https://aaminm096-ai.github.io/M-kirana-/manifest.json
-          yes | bubblewrap build
+
+      - name: Build APK
+        working-directory: twa
+        run: yes | bubblewrap build
+
+      - name: Find APK
+        run: find . -name "*.apk" -type f
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: MANSURI-KIRANA-APK
-          path: app-release-signed.apk
+          path: twa/**/*.apk
