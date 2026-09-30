@@ -9,307 +9,1913 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>M.kirana</title>
+<title>MANSURI KIRANA</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Noto Sans Devanagari,sans-serif;background:#f3f4f6;color:#111827}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Noto Sans Devanagari,sans-serif;background:#f3f4f6;color:#111827}
 header{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;padding:15px 16px;position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;box-shadow:0 4px 18px #0002}
 .brand-mark{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#22c55e,#16a34a);display:grid;place-items:center;font-weight:900;font-size:22px;box-shadow:0 6px 14px #0003}
-header h1{margin:0;font-size:24px;letter-spacing:.2px}header p{margin:3px 0 0;color:#cbd5e1;font-size:12px}
+header h1{margin:0;font-size:21px;letter-spacing:.2px}
+header p{margin:3px 0 0;color:#cbd5e1;font-size:12px}
 nav{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:9px;background:#fff;position:sticky;top:72px;z-index:4;box-shadow:0 2px 12px #0001}
-nav button{border:0;background:#f1f5f9;border-radius:12px;padding:11px 4px;font-size:12px;font-weight:700;color:#334155}nav button.active{background:#0f172a;color:#fff;box-shadow:0 5px 12px #0002}
-main{padding:14px;max-width:720px;margin:auto}.tab{display:none}.tab.active{display:block}
+nav button{border:0;background:#f1f5f9;border-radius:12px;padding:11px 4px;font-size:12px;font-weight:700;color:#334155}
+nav button.active{background:#0f172a;color:#fff;box-shadow:0 5px 12px #0002}
+main{padding:14px;max-width:720px;margin:auto}
+.tab{display:none}
+.tab.active{display:block}
 .card{background:#fff;border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 4px 18px #0f172a10;border:1px solid #eef2f7}
-h2{font-size:18px;margin:0 0 12px}h3{font-size:15px;margin:0 0 9px}
+h2{font-size:18px;margin:0 0 12px}
+h3{font-size:15px;margin:0 0 9px}
 input,select{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:10px;font-size:15px;margin:5px 0 10px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:0;border-radius:10px;padding:12px 14px;font-weight:700;background:#111827;color:white}.btn.secondary{background:#e5e7eb;color:#111827}.btn.green{background:#15803d}.btn.red{background:#b91c1c}.btn.full{width:100%}
-.total{font-size:28px;font-weight:800;text-align:right;padding:10px 0}.muted{color:#6b7280;font-size:13px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.btn{border:0;border-radius:10px;padding:12px 14px;font-weight:700;background:#111827;color:white}
+.btn.secondary{background:#e5e7eb;color:#111827}
+.btn.green{background:#15803d}
+.btn.red{background:#b91c1c}
+.btn.full{width:100%}
+.total{font-size:28px;font-weight:800;text-align:right;padding:10px 0}
+.muted{color:#6b7280;font-size:13px}
 .item-head{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1.25fr) minmax(70px,.75fr) 34px;gap:8px;font-size:12px;font-weight:800;color:#6b7280;margin:6px 0}
 .item{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1.25fr) minmax(70px,.75fr) 34px;gap:8px;align-items:center;margin-bottom:10px;min-width:0}
-.item input,.item select{margin:0;min-width:0;width:100%;padding:11px 8px}.item .qty-unit{display:grid;grid-template-columns:minmax(42px,.65fr) minmax(0,1.35fr);gap:5px;min-width:0}.item .amount{font-weight:700;text-align:right}.del{border:0;background:#fee2e2;color:#991b1b;border-radius:8px;height:42px;min-width:0}.unit-custom{display:none}.unit-custom.show{display:block}.item select{padding:11px 5px;font-size:13px}
-@media(max-width:520px){.item-head{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(60px,.7fr) 30px;gap:5px;font-size:11px}.item{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(60px,.7fr) 30px;gap:5px}.item input,.item select{padding:10px 5px;font-size:13px}.item .qty-unit{grid-template-columns:minmax(35px,.6fr) minmax(0,1.4fr);gap:3px}.del{height:40px}}
-@media(max-width:380px){.item-head{display:none}.item{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 30px;gap:6px;padding:9px;border:1px solid #e5e7eb;border-radius:12px}.item .name-field{grid-column:1 / 3}.item .qty-unit{grid-column:1 / 2}.item .price-field{grid-column:2 / 3}.item .del{grid-column:3;grid-row:2}}
-.customer{border:1px solid #e5e7eb;border-radius:12px;padding:12px;margin:8px 0}.customer b{font-size:16px}.balance{font-weight:800}.positive{color:#b91c1c}.paid{color:#15803d}
-table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 5px;border-bottom:1px solid #eee;text-align:left}
-.empty{padding:24px;text-align:center;color:#64748b}.section-title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.pill{background:#eef2ff;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}.history-tools{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0 14px}.modal{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:50;padding:12px}.modal.show{display:flex}.modal-box{background:#fff;width:100%;max-width:620px;max-height:88vh;overflow:auto;border-radius:20px 20px 10px 10px;padding:18px;box-shadow:0 10px 40px #0005}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px}.modal-head h3{margin:0;font-size:20px}.close-btn{border:0;background:#f1f5f9;border-radius:50%;width:38px;height:38px;font-size:22px}.history-row{padding:10px 0;border-bottom:1px solid #eee}.history-row:last-child{border-bottom:0}.history-row .due{color:#b91c1c;font-weight:800}.history-row .paid{color:#15803d;font-weight:800}.share-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-
+.item input,.item select{margin:0;min-width:0;width:100%;padding:11px 8px}
+.item .qty-unit{display:grid;grid-template-columns:minmax(42px,.65fr) minmax(0,1.35fr);gap:5px;min-width:0}
+.item .amount{font-weight:700;text-align:right}
+.del{border:0;background:#fee2e2;color:#991b1b;border-radius:8px;height:42px;min-width:0}
+.customer{border:1px solid #e5e7eb;border-radius:12px;padding:12px;margin:8px 0}
+.customer b{font-size:16px}
+.balance{font-weight:800}
+.positive{color:#b91c1c}
+.paid{color:#15803d}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 5px;border-bottom:1px solid #eee;text-align:left}
+.empty{padding:24px;text-align:center;color:#64748b}
+.section-title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.pill{background:#eef2ff;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}
+.history-tools{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0 14px}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:50;padding:12px}
+.modal.show{display:flex}
+.modal-box{background:#fff;width:100%;max-width:620px;max-height:88vh;overflow:auto;border-radius:20px 20px 10px 10px;padding:18px;box-shadow:0 10px 40px #0005}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px}
+.modal-head h3{margin:0;font-size:20px}
+.close-btn{border:0;background:#f1f5f9;border-radius:50%;width:38px;height:38px;font-size:22px}
+.history-row{padding:10px 0;border-bottom:1px solid #eee}
+.history-row:last-child{border-bottom:0}
+.history-row .due{color:#b91c1c;font-weight:800}
+.history-row .paid{color:#15803d;font-weight:800}
+.share-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
 .bill-card{border:1px solid #e5e7eb;border-radius:14px;padding:13px;margin:9px 0;background:#fff}
-.bill-card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.bill-card .bill-total-small{font-size:19px;font-weight:900}.bill-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.bill-actions .btn{padding:9px 11px;font-size:12px}
-.account-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.account-actions .btn{flex:1;min-width:100px}
-@media(max-width:520px){.history-tools{grid-template-columns:1fr}.section-title-row h2{font-size:18px}}
+.bill-card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.bill-card .bill-total-small{font-size:19px;font-weight:900}
+.bill-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.bill-actions .btn{padding:9px 11px;font-size:12px}
+.account-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.account-actions .btn{flex:1;min-width:100px}
+
+@media(max-width:520px){
+.item-head{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(60px,.7fr) 30px;gap:5px;font-size:11px}
+.item{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(60px,.7fr) 30px;gap:5px}
+.item input,.item select{padding:10px 5px;font-size:13px}
+.item .qty-unit{grid-template-columns:minmax(35px,.6fr) minmax(0,1.4fr);gap:3px}
+.history-tools{grid-template-columns:1fr}
+.section-title-row h2{font-size:18px}
+nav{grid-template-columns:1fr 1fr;gap:9px}
+nav button{font-size:15px;padding:14px 8px}
+}
+
+@media(max-width:380px){
+.item-head{display:none}
+.item{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 30px;gap:6px;padding:9px;border:1px solid #e5e7eb;border-radius:12px}
+.item .name-field{grid-column:1 / 3}
+.item .qty-unit{grid-column:1 / 2}
+.item .price-field{grid-column:2 / 3}
+.item .del{grid-column:3;grid-row:2}
+}
+
 @media print{
-  @page{size:A4;margin:10mm}
-  nav,header,.no-print{display:none!important}
-  .tab{display:none!important}
-  .tab.printable{display:block!important}
-  body{background:#fff;color:#111}
-  .card{box-shadow:none;border-radius:0;padding:0;margin:0}
-  .bill-paper{width:100%;max-width:190mm;margin:0 auto}
-  .bill-title{font-size:30px!important;font-weight:900!important;text-align:center;margin:0 0 12px!important;letter-spacing:.5px}
-  .bill-meta{display:flex;justify-content:space-between;gap:20px;font-size:14px;margin:4px 0 10px}
-  .bill-customer{font-size:17px;font-weight:800;border-top:1px solid #222;border-bottom:1px solid #222;padding:8px 0;margin:8px 0 12px}
-  .bill-table{width:100%;border-collapse:collapse;font-size:14px}
-  .bill-table th,.bill-table td{padding:8px 6px;border:1px solid #555}
-  .bill-table th{font-weight:900;text-align:center}
-  .bill-table td:nth-child(1),.bill-table td:nth-child(3),.bill-table td:nth-child(4),.bill-table td:nth-child(5){text-align:center}
-  .bill-total{font-size:20px;font-weight:900;text-align:right;margin-top:10px}
+@page{size:A4;margin:10mm}
+nav,header,.no-print{display:none!important}
+.tab{display:none!important}
+.tab.printable{display:block!important}
+body{background:#fff;color:#111}
+.card{box-shadow:none;border-radius:0;padding:0;margin:0}
+.bill-paper{width:100%;max-width:190mm;margin:0 auto}
+.bill-title{font-size:30px!important;font-weight:900!important;text-align:center;margin:0!important;letter-spacing:.5px}
+.bill-owner{text-align:center;font-size:16px;font-weight:700;margin:3px 0 10px}
+.bill-meta{display:flex;justify-content:space-between;gap:20px;font-size:14px;margin:4px 0 10px}
+.bill-customer{font-size:17px;font-weight:800;border-top:1px solid #222;border-bottom:1px solid #222;padding:8px 0;margin:8px 0 12px}
+.bill-table{width:100%;border-collapse:collapse;font-size:14px}
+.bill-table th,.bill-table td{padding:8px 6px;border:1px solid #555}
+.bill-table th{font-weight:900;text-align:center}
+.bill-table td:nth-child(1),.bill-table td:nth-child(3),.bill-table td:nth-child(4),.bill-table td:nth-child(5){text-align:center}
+.bill-total{font-size:20px;font-weight:900;text-align:right;margin-top:10px}
+.receipt-footer{text-align:center;margin-top:18px;font-size:13px}
 }
 
 .menu-btn{margin-left:auto;border:0;background:#fff1;border-radius:12px;color:#fff;font-size:24px;width:46px;height:46px;cursor:pointer}
-header{display:flex;align-items:center;gap:12px}
 .drawer-overlay{display:none;position:fixed;inset:0;background:#0008;z-index:20}
 .drawer-overlay.open{display:block}
 .drawer{position:absolute;right:0;top:0;height:100%;width:min(320px,88vw);background:#fff;padding:22px 16px;box-shadow:-8px 0 30px #0003;transform:translateX(100%);transition:.22s;overflow:auto}
 .drawer-overlay.open .drawer{transform:translateX(0)}
 .drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.drawer-head h2{margin:0}.drawer-close{border:0;background:#f1f5f9;border-radius:10px;font-size:25px;width:42px;height:42px}
+.drawer-head h2{margin:0}
+.drawer-close{border:0;background:#f1f5f9;border-radius:10px;font-size:25px;width:42px;height:42px}
 .drawer button{width:100%;margin:7px 0;text-align:left;border:0;background:#f1f5f9;border-radius:13px;padding:14px;font-size:16px;font-weight:800;color:#172033}
 .drawer button:active{background:#e2e8f0}
-@media(max-width:520px){nav{grid-template-columns:1fr 1fr;gap:9px}nav button{font-size:15px;padding:14px 8px}.menu-btn{font-size:22px}}
 </style>
 </head>
+
 <body>
-<header><div class="brand-mark">M</div><div><h1>M.kirana</h1><p>बिलिंग • उधारी</p></div><button class="menu-btn" aria-label="मेन्यू" onclick="openMenu()">☰</button></header>
+
+<header>
+<div class="brand-mark">M</div>
+<div>
+<h1>MANSURI KIRANA</h1>
+<p>AALAM MANSURI • 9754083323</p>
+</div>
+<button class="menu-btn" aria-label="मेन्यू" onclick="openMenu()">☰</button>
+</header>
+
 <nav>
 <button class="active" onclick="showTab('bill',this)">🧾 बिल</button>
 <button onclick="showTab('credit',this)">📒 उधारी</button>
 </nav>
+
 <div id="drawerOverlay" class="drawer-overlay" onclick="if(event.target===this)closeMenu()">
-  <aside class="drawer">
-    <div class="drawer-head"><h2>M.kirana</h2><button class="drawer-close" onclick="closeMenu()">×</button></div>
-    <button onclick="openFromMenu('history')">🧾 सेव किए हुए बिल</button>
-    <button onclick="openFromMenu('stock')">📦 स्टॉक / रेट लिस्ट</button>
-    <button onclick="openFromMenu('report')">📈 बिक्री रिपोर्ट</button>
-    <button onclick="openFromMenu('settings')">⚙️ सेटिंग</button>
-  </aside>
+<aside class="drawer">
+<div class="drawer-head">
+<h2>MANSURI KIRANA</h2>
+<button class="drawer-close" onclick="closeMenu()">×</button>
 </div>
+<button onclick="openFromMenu('history')">🧾 सेव किए हुए बिल</button>
+<button onclick="openFromMenu('stock')">📦 स्टॉक / रेट लिस्ट</button>
+<button onclick="openFromMenu('report')">📈 बिक्री रिपोर्ट</button>
+<button onclick="openFromMenu('settings')">⚙️ सेटिंग</button>
+</aside>
+</div>
+
 <main>
 
 <section id="bill" class="tab active">
 <div class="card">
 <h2>नया बिल</h2>
-<div class="row"><div><label>ग्राहक का नाम</label><input id="billCustomer" placeholder="जैसे: राहुल"></div><div id="billPhoneWrap"><label>ग्राहक मोबाइल</label><input id="billPhone" inputmode="numeric" maxlength="10" placeholder="मोबाइल नंबर"></div></div>
-<div class="item-head"><span>सामान</span><span>मात्रा / इकाई</span><span>रेट (₹)</span><span></span></div><div id="items"></div>
+
+<div class="row">
+<div>
+<label>ग्राहक का नाम</label>
+<input id="billCustomer" placeholder="जैसे: राहुल">
+</div>
+<div id="billPhoneWrap">
+<label>ग्राहक मोबाइल</label>
+<input id="billPhone" inputmode="numeric" maxlength="10" placeholder="मोबाइल नंबर">
+</div>
+</div>
+
+<div class="item-head">
+<span>सामान</span>
+<span>मात्रा / इकाई</span>
+<span>रेट (₹)</span>
+<span></span>
+</div>
+
+<div id="items"></div>
+
 <button class="btn secondary full" onclick="addItem()">＋ सामान जोड़ें</button>
+
 <div class="total">₹ <span id="grandTotal">0.00</span></div>
+
 <div class="row">
 <button class="btn green" onclick="saveBill(false)">💾 बिल सेव करें</button>
-<button class="btn" onclick="saveBill(true)">🖨️ सेव + प्रिंट</button><button class="btn green" onclick="saveBill(false,true)">📲 WhatsApp</button>
+<button class="btn" onclick="saveBill(true)">🖨️ सेव + प्रिंट</button>
+<button class="btn green" onclick="saveBill(false,true)">📲 WhatsApp</button>
 </div>
+
 </div>
 </section>
 
 <section id="credit" class="tab">
+
 <div class="card">
 <h2>उधारी / जमा</h2>
-<div class="row"><div><label>ग्राहक का नाम</label><input id="custName" placeholder="नाम"></div><div id="creditPhoneWrap"><label>ग्राहक मोबाइल</label><input id="custPhone" inputmode="numeric" maxlength="10" placeholder="मोबाइल"></div></div>
-<div class="row"><div><label>रकम</label><input id="custAmount" type="number" min="0" step="0.01" placeholder="₹"></div><div><label>नोट</label><input id="custNote" placeholder="जैसे: किराना सामान"></div></div>
-<div class="row"><button class="btn full" onclick="saveCredit('due')">📒 उधारी जोड़ें</button><button class="btn full" style="background:#16803a" onclick="saveCredit('paid')">💰 जमा करें</button></div>
-<p class="muted">ग्राहक का नाम चुनकर नीचे से उसी खाते में सीधे <b>जमा</b> या नई <b>उधारी</b> जोड़ सकते हैं।</p>
+
+<div class="row">
+<div>
+<label>ग्राहक का नाम</label>
+<input id="custName" placeholder="नाम">
 </div>
-<div class="card"><h3>ग्राहक खोजें</h3><input id="creditSearch" oninput="renderCredits()" placeholder="नाम या मोबाइल से खोजें"><div id="credits"></div></div>
+<div id="creditPhoneWrap">
+<label>ग्राहक मोबाइल</label>
+<input id="custPhone" inputmode="numeric" maxlength="10" placeholder="मोबाइल">
+</div>
+</div>
+
+<div class="row">
+<div>
+<label>रकम</label>
+<input id="custAmount" type="number" min="0" step="0.01" placeholder="₹">
+</div>
+<div>
+<label>नोट</label>
+<input id="custNote" placeholder="जैसे: किराना सामान">
+</div>
+</div>
+
+<div class="row">
+<button class="btn full" onclick="saveCredit('due')">📒 उधारी जोड़ें</button>
+<button class="btn full" style="background:#16803a" onclick="saveCredit('paid')">💰 जमा करें</button>
+</div>
+
+<p class="muted">
+ग्राहक का नाम चुनकर नीचे से उसी खाते में सीधे <b>जमा</b> या नई <b>उधारी</b> जोड़ सकते हैं।
+</p>
+</div>
+
+<div class="card">
+<h3>ग्राहक खोजें</h3>
+<input id="creditSearch" oninput="renderCredits()" placeholder="नाम या मोबाइल से खोजें">
+<div id="credits"></div>
+</div>
+
 </section>
 
 <section id="history" class="tab">
 <div class="card">
-  <div class="section-title-row"><div><h2>🧾 सेव किए हुए बिल</h2><p class="muted">आपके सभी सेव बिल यहाँ मिलेंगे।</p></div><span class="pill" id="billCountPill">0 बिल</span></div>
-  <div class="history-tools"><input id="historySearch" oninput="renderHistory()" placeholder="ग्राहक या बिल खोजें"><button class="btn secondary no-print" onclick="clearHistory()">सारी हिस्ट्री हटाएँ</button></div>
-  <div id="historyList"></div>
+<div class="section-title-row">
+<div>
+<h2>🧾 सेव किए हुए बिल</h2>
+<p class="muted">आपके सभी सेव बिल यहाँ मिलेंगे।</p>
+</div>
+<span class="pill" id="billCountPill">0 बिल</span>
+</div>
+
+<div class="history-tools">
+<input id="historySearch" oninput="renderHistory()" placeholder="ग्राहक या बिल खोजें">
+<button class="btn secondary no-print" onclick="clearHistory()">सारी हिस्ट्री हटाएँ</button>
+</div>
+
+<div id="historyList"></div>
 </div>
 </section>
 
 <section id="stock" class="tab">
-<div class="card"><h2>📦 सामान / रेट लिस्ट / स्टॉक</h2><p class="muted">यहाँ किसी सामान का बिक्री रेट सेव करें। बिल में वही नाम लिखते ही रेट अपने-आप भर जाएगा।</p>
-<div class="row"><div><label>सामान</label><input id="stockName" placeholder="जैसे: तेल"></div><div><label>इकाई</label><select id="stockUnit"><option>नग</option><option>किलो</option><option>ग्राम</option><option>लीटर</option><option>मिलीलीटर</option><option>पैकेट</option><option>डिब्बा</option><option>बोतल</option><option>दर्जन</option></select></div></div>
-<div class="row"><div><label>मौजूदा स्टॉक</label><input id="stockQty" type="number" step="0.01" min="0"></div><div><label>बिक्री रेट</label><input id="stockPrice" type="number" step="0.01" min="0"></div></div>
-<button class="btn full" onclick="saveStock()">💾 स्टॉक सेव करें</button></div>
-<div class="card"><input id="stockSearch" oninput="renderStock()" placeholder="सामान खोजें"><div id="stockList"></div></div>
+
+<div class="card">
+<h2>📦 सामान / रेट लिस्ट / स्टॉक</h2>
+<p class="muted">
+यहाँ किसी सामान का बिक्री रेट सेव करें। बिल में वही नाम लिखते ही रेट अपने-आप भर जाएगा।
+</p>
+
+<div class="row">
+<div>
+<label>सामान</label>
+<input id="stockName" placeholder="जैसे: तेल">
+</div>
+<div>
+<label>इकाई</label>
+<select id="stockUnit">
+<option>नग</option>
+<option>किलो</option>
+<option>ग्राम</option>
+<option>लीटर</option>
+<option>मिलीलीटर</option>
+<option>पैकेट</option>
+<option>डिब्बा</option>
+<option>बोतल</option>
+<option>दर्जन</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+<div>
+<label>मौजूदा स्टॉक</label>
+<input id="stockQty" type="number" step="0.01" min="0">
+</div>
+<div>
+<label>बिक्री रेट</label>
+<input id="stockPrice" type="number" step="0.01" min="0">
+</div>
+</div>
+
+<button class="btn full" onclick="saveStock()">💾 स्टॉक सेव करें</button>
+</div>
+
+<div class="card">
+<input id="stockSearch" oninput="renderStock()" placeholder="सामान खोजें">
+<div id="stockList"></div>
+</div>
+
 </section>
 
 <section id="report" class="tab">
-<div class="card"><h2>📈 बिक्री रिपोर्ट</h2><div class="row"><div><b>आज की बिक्री</b><div class="total" style="text-align:left">₹ <span id="todaySales">0.00</span></div></div><div><b>इस महीने</b><div class="total" style="text-align:left">₹ <span id="monthSales">0.00</span></div></div></div><div class="row"><div>आज के बिल: <b id="todayBills">0</b></div><div>कुल बिल: <b id="allBills">0</b></div></div></div>
-<div class="card"><h3>📒 कुल उधारी</h3><div class="total" id="totalCredit">₹0.00</div></div>
+
+<div class="card">
+<h2>📈 बिक्री रिपोर्ट</h2>
+
+<div class="row">
+<div>
+<b>आज की बिक्री</b>
+<div class="total" style="text-align:left">₹ <span id="todaySales">0.00</span></div>
+</div>
+
+<div>
+<b>इस महीने</b>
+<div class="total" style="text-align:left">₹ <span id="monthSales">0.00</span></div>
+</div>
+</div>
+
+<div class="row">
+<div>आज के बिल: <b id="todayBills">0</b></div>
+<div>कुल बिल: <b id="allBills">0</b></div>
+</div>
+
+</div>
+
+<div class="card">
+<h3>📒 कुल उधारी</h3>
+<div class="total" id="totalCredit">₹0.00</div>
+</div>
+
 </section>
 
 <section id="settings" class="tab">
-<div class="card"><h2>⚙️ सेटिंग</h2><button class="btn full" onclick="installApp()">📲 Home Screen पर App Install करें</button><br>
-<label><input type="checkbox" id="saveCustomerPhone" style="width:auto;margin-right:8px"> ग्राहक का मोबाइल नंबर रखना है</label>
-<p class="muted">इसे बंद करने पर मोबाइल नंबर का विकल्प छिप जाएगा और नया मोबाइल नंबर सेव नहीं होगा।</p>
-<hr>
-<h3>🔐 PIN Lock</h3><label><input type="checkbox" id="pinEnabled" style="width:auto;margin-right:8px"> PIN Lock चालू करें</label>
-<input id="newPin" inputmode="numeric" maxlength="6" placeholder="4-6 अंक का PIN">
-<button class="btn full" onclick="saveSettings()">सेटिंग सेव करें</button>
-<hr>
-<h3>💾 डेटा बैकअप</h3><div class="row"><button class="btn secondary" onclick="exportData()">⬇️ Backup निकालें</button><button class="btn secondary" onclick="document.getElementById('importFile').click()">⬆️ Backup डालें</button></div><input id="importFile" type="file" accept="application/json" style="display:none" onchange="importData(event)">
-</div></section>
 
-<div id="customerModal" class="modal" onclick="if(event.target===this)closeCustomer()"><div class="modal-box"><div class="modal-head"><h3 id="modalCustomerName">ग्राहक का हिसाब</h3><button class="close-btn" onclick="closeCustomer()">×</button></div><div id="modalCustomerInfo"></div><div id="modalHistory"></div><div class="share-row"><button id="modalWhatsApp" class="btn green" onclick="shareCustomerWhatsApp()">📲 WhatsApp</button><button id="modalSms" class="btn" onclick="shareCustomerSMS()">💬 SMS</button></div>
-<div id="modalDeleteWrap" style="margin-top:10px"></div></div></div>
-<div id="billModal" class="modal" onclick="if(event.target===this)closeBillModal()">
+<div class="card">
+<h2>⚙️ सेटिंग</h2>
+
+<button class="btn full" onclick="installApp()">📲 Home Screen पर App Install करें</button>
+<br>
+
+<label>
+<input type="checkbox" id="saveCustomerPhone" style="width:auto;margin-right:8px">
+ग्राहक का मोबाइल नंबर रखना है
+</label>
+
+<p class="muted">
+इसे बंद करने पर मोबाइल नंबर का विकल्प छिप जाएगा और नया मोबाइल नंबर सेव नहीं होगा।
+</p>
+
+<hr>
+
+<h3>🔐 PIN Lock</h3>
+
+<label>
+<input type="checkbox" id="pinEnabled" style="width:auto;margin-right:8px">
+PIN Lock चालू करें
+</label>
+
+<input id="newPin" inputmode="numeric" maxlength="6" placeholder="4-6 अंक का PIN">
+
+<button class="btn full" onclick="saveSettings()">सेटिंग सेव करें</button>
+
+<hr>
+
+<h3>💾 डेटा बैकअप</h3>
+
+<div class="row">
+<button class="btn secondary" onclick="exportData()">⬇️ Backup निकालें</button>
+<button class="btn secondary" onclick="document.getElementById('importFile').click()">⬆️ Backup डालें</button>
+</div>
+
+<input id="importFile" type="file" accept="application/json" style="display:none" onchange="importData(event)">
+
+</div>
+</section>
+
+<div id="customerModal" class="modal" onclick="if(event.target===this)closeCustomer()">
+
 <div class="modal-box">
-  <div class="modal-head"><h3 id="billModalTitle">बिल विवरण</h3><button class="close-btn" onclick="closeBillModal()">×</button></div>
-  <div id="billModalBody"></div>
-  <div class="share-row">
-    <button class="btn" onclick="printActiveBill()">🖨️ प्रिंट</button>
-    <button class="btn green" onclick="shareActiveBill()">📲 WhatsApp</button>
-  </div>
-</div></div>
+
+<div class="modal-head">
+<h3 id="modalCustomerName">ग्राहक का हिसाब</h3>
+<button class="close-btn" onclick="closeCustomer()">×</button>
+</div>
+
+<div id="modalCustomerInfo"></div>
+<div id="modalHistory"></div>
+
+<div class="share-row">
+<button id="modalWhatsApp" class="btn green" onclick="shareCustomerWhatsApp()">📲 WhatsApp रसीद</button>
+<button id="modalSms" class="btn" onclick="shareCustomerSMS()">💬 SMS</button>
+</div>
+
+<div id="modalDeleteWrap" style="margin-top:10px"></div>
+
+</div>
+</div>
+
+<div id="billModal" class="modal" onclick="if(event.target===this)closeBillModal()">
+
+<div class="modal-box">
+
+<div class="modal-head">
+<h3 id="billModalTitle">बिल विवरण</h3>
+<button class="close-btn" onclick="closeBillModal()">×</button>
+</div>
+
+<div id="billModalBody"></div>
+
+<div class="share-row">
+<button class="btn" onclick="printActiveBill()">🖨️ प्रिंट</button>
+<button class="btn green" onclick="shareActiveBill()">📲 WhatsApp</button>
+</div>
+
+</div>
+</div>
+
 <section id="printArea" class="tab printable"></section>
+
 </main>
 
 <script>
+
 let items=[];
 let bills=JSON.parse(localStorage.getItem('mk_bills')||'[]');
 let credits=JSON.parse(localStorage.getItem('mk_credits')||'{}');
 let stock=JSON.parse(localStorage.getItem('mk_stock')||'{}');
 let settings=JSON.parse(localStorage.getItem('mk_settings')||'{"saveCustomerPhone":true,"pinEnabled":false,"pin":""}');
-function openMenu(){document.getElementById('drawerOverlay').classList.add('open');}
-function closeMenu(){document.getElementById('drawerOverlay').classList.remove('open');}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
-function openFromMenu(id){closeMenu();showTab(id,null);}
-function showTab(id,btn){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');if(id==='credit')renderCredits();if(id==='history')renderHistory();if(id==='stock')renderStock();if(id==='report')renderReport();if(id==='settings')loadSettings();window.scrollTo({top:0,behavior:'smooth'});}
-function suggestUnit(name){const n=(name||'').toLowerCase();if(/तेल|oil|घी|ghee/.test(n))return 'लीटर';if(/शक्कर|सक्कर|चीनी|sugar|आटा|मैदा|सूजी|चावल|दाल|गेहूं|गेहू|मक्का|बाजरा|ज्वार/.test(n))return 'किलो';if(/साबुन|soap|बिस्किट|बिस्किट|माचिस|पेन|कॉपी|पेंसिल|अगरबत्ती/.test(n))return 'नग';if(/दूध|milk|जूस|शरबत|पानी/.test(n))return 'लीटर';return '';}
-function addItem(name='',qty=1,price=0,unit=''){items.push({name,qty,price,unit:unit||suggestUnit(name)||'नग'});renderItems();}
-function renderItems(){let el=document.getElementById('items');el.innerHTML='';items.forEach((it,i)=>{el.innerHTML+=`<div class="item"><input class="name-field" placeholder="${i+1}. सामान का नाम लिखें" aria-label="सामान का नाम" value="${esc(it.name)}" oninput="items[${i}].name=this.value;autoUnit(${i})"><div class="qty-unit"><input type="number" min="0" step="0.01" aria-label="मात्रा" value="${it.qty}" oninput="items[${i}].qty=+this.value;updateTotal()"><select id="unit-${i}" aria-label="इकाई" onchange="items[${i}].unit=this.value;toggleCustomUnit(${i})"><option value="नग" ${it.unit==='नग'?'selected':''}>नग</option><option value="किलो" ${it.unit==='किलो'?'selected':''}>किलो</option><option value="ग्राम" ${it.unit==='ग्राम'?'selected':''}>ग्राम</option><option value="लीटर" ${it.unit==='लीटर'?'selected':''}>लीटर</option><option value="मिलीलीटर" ${it.unit==='मिलीलीटर'?'selected':''}>मिलीलीटर</option><option value="पैकेट" ${it.unit==='पैकेट'?'selected':''}>पैकेट</option><option value="डिब्बा" ${it.unit==='डिब्बा'?'selected':''}>डिब्बा</option><option value="बोतल" ${it.unit==='बोतल'?'selected':''}>बोतल</option><option value="दर्जन" ${it.unit==='दर्जन'?'selected':''}>दर्जन</option><option value="मीटर" ${it.unit==='मीटर'?'selected':''}>मीटर</option><option value="अन्य" ${it.unit==='अन्य'?'selected':''}>अन्य</option></select></div><input class="price-field" type="number" min="0" step="0.01" value="${it.price}" placeholder="रेट" aria-label="रेट" oninput="items[${i}].price=+this.value;updateTotal()"><button class="del" aria-label="सामान हटाएँ" onclick="items.splice(${i},1);renderItems()">×</button></div>`});updateTotal();}
-function findStock(name){const n=(name||'').trim().toLowerCase();if(!n)return null;const key=Object.keys(stock).find(k=>k.trim().toLowerCase()===n);return key?stock[key]:null;}
-function autoUnit(i){const u=suggestUnit(items[i].name);if(u){items[i].unit=u;const sel=document.getElementById('unit-'+i);if(sel)sel.value=u;} const x=findStock(items[i].name);if(x){items[i].price=+x.price||0;if(x.unit){items[i].unit=x.unit;const sel=document.getElementById('unit-'+i);if(sel)sel.value=x.unit;}const price=document.querySelectorAll('.price-field')[i];if(price)price.value=items[i].price;updateTotal();}}
-function toggleCustomUnit(i){}
 
-function updateTotal(){let t=items.reduce((s,x)=>s+(+x.qty||0)*(+x.price||0),0);document.getElementById('grandTotal').textContent=t.toFixed(2);return t;}
-function saveBill(print,wa){let total=updateTotal();if(!items.length||total<=0){alert('कम से कम एक सामान और सही कीमत डालें।');return}let phone=settings.saveCustomerPhone?document.getElementById('billPhone').value.trim():'';let bill={id:Date.now(),date:new Date().toLocaleString('hi-IN'),customer:document.getElementById('billCustomer').value.trim()||'Cash Customer',phone,items:items.map(x=>({...x})),total};bills.unshift(bill);localStorage.setItem('mk_bills',JSON.stringify(bills));items.forEach(x=>{let k=x.name.trim();if(k&&stock[k])stock[k].qty=Math.max(0,(+stock[k].qty||0)-(+x.qty||0));});localStorage.setItem('mk_stock',JSON.stringify(stock));if(wa)shareWhatsApp(bill);else if(print)printBill(bill);else alert('बिल सेव हो गया।');items=[];renderItems();document.getElementById('billCustomer').value='';document.getElementById('billPhone').value='';}
+function openMenu(){
+document.getElementById('drawerOverlay').classList.add('open');
+}
+
+function closeMenu(){
+document.getElementById('drawerOverlay').classList.remove('open');
+}
+
+document.addEventListener('keydown',e=>{
+if(e.key==='Escape')closeMenu();
+});
+
+function openFromMenu(id){
+closeMenu();
+showTab(id,null);
+}
+
+function showTab(id,btn){
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+
+document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+
+if(btn)btn.classList.add('active');
+
+if(id==='credit')renderCredits();
+if(id==='history')renderHistory();
+if(id==='stock')renderStock();
+if(id==='report')renderReport();
+if(id==='settings')loadSettings();
+
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function suggestUnit(name){
+const n=(name||'').toLowerCase();
+
+if(/तेल|oil|घी|ghee/.test(n))return 'लीटर';
+
+if(/शक्कर|सक्कर|चीनी|sugar|आटा|मैदा|सूजी|चावल|दाल|गेहूं|गेहू|मक्का|बाजरा|ज्वार/.test(n))
+return 'किलो';
+
+if(/साबुन|soap|बिस्किट|माचिस|पेन|कॉपी|पेंसिल|अगरबत्ती/.test(n))
+return 'नग';
+
+if(/दूध|milk|जूस|शरबत|पानी/.test(n))
+return 'लीटर';
+
+return '';
+}
+
+function addItem(name='',qty=1,price=0,unit=''){
+items.push({
+name,
+qty,
+price,
+unit:unit||suggestUnit(name)||'नग'
+});
+renderItems();
+}
+
+function renderItems(){
+
+let el=document.getElementById('items');
+el.innerHTML='';
+
+items.forEach((it,i)=>{
+
+el.innerHTML+=`
+<div class="item">
+
+<input
+class="name-field"
+placeholder="${i+1}. सामान का नाम लिखें"
+aria-label="सामान का नाम"
+value="${esc(it.name)}"
+oninput="items[${i}].name=this.value;autoUnit(${i})">
+
+<div class="qty-unit">
+
+<input
+type="number"
+min="0"
+step="0.01"
+aria-label="मात्रा"
+value="${it.qty}"
+oninput="items[${i}].qty=+this.value;updateTotal()">
+
+<select
+id="unit-${i}"
+aria-label="इकाई"
+onchange="items[${i}].unit=this.value">
+
+<option value="नग" ${it.unit==='नग'?'selected':''}>नग</option>
+<option value="किलो" ${it.unit==='किलो'?'selected':''}>किलो</option>
+<option value="ग्राम" ${it.unit==='ग्राम'?'selected':''}>ग्राम</option>
+<option value="लीटर" ${it.unit==='लीटर'?'selected':''}>लीटर</option>
+<option value="मिलीलीटर" ${it.unit==='मिलीलीटर'?'selected':''}>मिलीलीटर</option>
+<option value="पैकेट" ${it.unit==='पैकेट'?'selected':''}>पैकेट</option>
+<option value="डिब्बा" ${it.unit==='डिब्बा'?'selected':''}>डिब्बा</option>
+<option value="बोतल" ${it.unit==='बोतल'?'selected':''}>बोतल</option>
+<option value="दर्जन" ${it.unit==='दर्जन'?'selected':''}>दर्जन</option>
+<option value="मीटर" ${it.unit==='मीटर'?'selected':''}>मीटर</option>
+<option value="अन्य" ${it.unit==='अन्य'?'selected':''}>अन्य</option>
+
+</select>
+</div>
+
+<input
+class="price-field"
+type="number"
+min="0"
+step="0.01"
+value="${it.price}"
+placeholder="रेट"
+aria-label="रेट"
+oninput="items[${i}].price=+this.value;updateTotal()">
+
+<button
+class="del"
+aria-label="सामान हटाएँ"
+onclick="items.splice(${i},1);renderItems()">×</button>
+
+</div>`;
+});
+
+updateTotal();
+}
+
+function findStock(name){
+const n=(name||'').trim().toLowerCase();
+if(!n)return null;
+
+const key=Object.keys(stock).find(k=>
+k.trim().toLowerCase()===n
+);
+
+return key?stock[key]:null;
+}
+
+function autoUnit(i){
+
+const u=suggestUnit(items[i].name);
+
+if(u){
+items[i].unit=u;
+const sel=document.getElementById('unit-'+i);
+if(sel)sel.value=u;
+}
+
+const x=findStock(items[i].name);
+
+if(x){
+
+items[i].price=+x.price||0;
+
+if(x.unit){
+items[i].unit=x.unit;
+
+const sel=document.getElementById('unit-'+i);
+if(sel)sel.value=x.unit;
+}
+
+const price=document.querySelectorAll('.price-field')[i];
+
+if(price)
+price.value=items[i].price;
+
+updateTotal();
+}
+}
+
+function updateTotal(){
+
+let t=items.reduce(
+(s,x)=>s+(+x.qty||0)*(+x.price||0),
+0
+);
+
+document.getElementById('grandTotal').textContent=t.toFixed(2);
+
+return t;
+}
+
+function saveBill(print,wa){
+
+let total=updateTotal();
+
+if(!items.length||total<=0){
+alert('कम से कम एक सामान और सही कीमत डालें।');
+return;
+}
+
+let phone=settings.saveCustomerPhone
+?document.getElementById('billPhone').value.trim()
+:'';
+
+let bill={
+id:Date.now(),
+date:new Date().toLocaleString('hi-IN'),
+customer:document.getElementById('billCustomer').value.trim()||'Cash Customer',
+phone,
+items:items.map(x=>({...x})),
+total
+};
+
+bills.unshift(bill);
+
+localStorage.setItem(
+'mk_bills',
+JSON.stringify(bills)
+);
+
+items.forEach(x=>{
+
+let k=x.name.trim();
+
+if(k&&stock[k])
+stock[k].qty=Math.max(
+0,
+(+stock[k].qty||0)-(+x.qty||0)
+);
+
+});
+
+localStorage.setItem(
+'mk_stock',
+JSON.stringify(stock)
+);
+
+if(wa)
+shareWhatsApp(bill);
+else if(print)
+printBill(bill);
+else
+alert('बिल सेव हो गया।');
+
+items=[];
+renderItems();
+
+document.getElementById('billCustomer').value='';
+document.getElementById('billPhone').value='';
+}
 
 function printBill(b){
-  let p=document.getElementById('printArea');
-  const shopPhone='9754083323';
-  p.innerHTML=`<div class="card"><div class="bill-paper">
-    <h1 class="bill-title">M.kirana</h1>
-    <div class="bill-meta"><span>दिनांक: ${esc(b.date)}</span><span>मो.: ${shopPhone}</span></div>
-    <div class="bill-customer">ग्राहक का नाम: ${esc(b.customer)}</div>
-    ${b.phone?`<div style="font-size:14px;margin:-4px 0 10px">ग्राहक मोबाइल: ${esc(b.phone)}</div>`:''}
-    <table class="bill-table"><tr><th>क्र.</th><th>सामान</th><th>मात्रा</th><th>रेट</th><th>रकम</th></tr>${b.items.map((x,i)=>`<tr><td>${i+1}.</td><td>${esc(x.name)}</td><td>${x.qty} ${esc(x.unit||'नग')}</td><td>₹${Number(x.price).toFixed(2)}</td><td>₹${(x.qty*x.price).toFixed(2)}</td></tr>`).join('')}</table>
-    <div class="bill-total">कुल: ₹${b.total.toFixed(2)}</div>
-  </div></div>`;
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  p.classList.add('active');
-  window.print();
-  setTimeout(()=>{p.classList.remove('active');document.getElementById('bill').classList.add('active')},500);
+
+let p=document.getElementById('printArea');
+
+const shopPhone='9754083323';
+
+p.innerHTML=`
+<div class="card">
+<div class="bill-paper">
+
+<h1 class="bill-title">MANSURI KIRANA</h1>
+
+<div class="bill-owner">
+AALAM MANSURI • Mo. ${shopPhone}
+</div>
+
+<div class="bill-meta">
+<span>दिनांक: ${esc(b.date)}</span>
+</div>
+
+<div class="bill-customer">
+ग्राहक का नाम: ${esc(b.customer)}
+</div>
+
+${b.phone?
+`<div style="font-size:14px;margin:-4px 0 10px">
+ग्राहक मोबाइल: ${esc(b.phone)}
+</div>`:''}
+
+<table class="bill-table">
+
+<tr>
+<th>क्र.</th>
+<th>सामान</th>
+<th>मात्रा</th>
+<th>रेट</th>
+<th>रकम</th>
+</tr>
+
+${b.items.map((x,i)=>`
+
+<tr>
+<td>${i+1}.</td>
+<td>${esc(x.name)}</td>
+<td>${x.qty} ${esc(x.unit||'नग')}</td>
+<td>₹${Number(x.price).toFixed(2)}</td>
+<td>₹${(x.qty*x.price).toFixed(2)}</td>
+</tr>
+
+`).join('')}
+
+</table>
+
+<div class="bill-total">
+कुल: ₹${Number(b.total).toFixed(2)}
+</div>
+
+<div class="receipt-footer">
+धन्यवाद! फिर पधारें।<br>
+MANSURI KIRANA
+</div>
+
+</div>
+</div>`;
+
+document.querySelectorAll('.tab')
+.forEach(x=>x.classList.remove('active'));
+
+p.classList.add('active');
+
+window.print();
+
+setTimeout(()=>{
+p.classList.remove('active');
+document.getElementById('bill').classList.add('active');
+},500);
 }
-function saveCredit(type){let n=document.getElementById('custName').value.trim();let a=+(document.getElementById('custAmount').value||0);let ph=settings.saveCustomerPhone?document.getElementById('custPhone').value.trim():'';let note=document.getElementById('custNote').value.trim();if(!n||a<=0){alert('नाम और सही रकम डालें।');return}if(!credits[n])credits[n]={name:n,phone:ph,balance:0,history:[]};if(ph)credits[n].phone=ph;credits[n].balance += type==='due'?a:-a;credits[n].history.unshift({date:new Date().toLocaleString('hi-IN'),type,amount:a,note});localStorage.setItem('mk_credits',JSON.stringify(credits));document.getElementById('custAmount').value='';document.getElementById('custNote').value='';renderCredits();alert(type==='due'?'उधारी जोड़ दी गई।':'जमा रकम हिसाब में जोड़ दी गई।');}
-function quickCredit(key,type){let n=decodeURIComponent(key);let a=+(prompt((type==='paid'?'💰 जमा करें — ':'📒 उधारी जोड़ें — ')+n+'\nरकम डालें:')||0);if(a<=0)return;if(!credits[n])return;credits[n].balance += type==='due'?a:-a;credits[n].history.unshift({date:new Date().toLocaleString('hi-IN'),type,amount:a,note:type==='paid'?'जमा/वसूली':'उधारी'});localStorage.setItem('mk_credits',JSON.stringify(credits));renderCredits();alert(type==='due'?'उधारी जोड़ दी गई।':'जमा हो गया।');}
+
+function saveCredit(type){
+
+let n=document.getElementById('custName').value.trim();
+
+let a=+(document.getElementById('custAmount').value||0);
+
+let ph=settings.saveCustomerPhone
+?document.getElementById('custPhone').value.trim()
+:'';
+
+let note=document.getElementById('custNote').value.trim();
+
+if(!n||a<=0){
+alert('नाम और सही रकम डालें।');
+return;
+}
+
+if(!credits[n])
+credits[n]={
+name:n,
+phone:ph,
+balance:0,
+history:[]
+};
+
+if(ph)
+credits[n].phone=ph;
+
+let oldBalance=credits[n].balance;
+
+credits[n].balance +=
+type==='due'?a:-a;
+
+credits[n].history.unshift({
+date:new Date().toLocaleString('hi-IN'),
+type,
+amount:a,
+note
+});
+
+localStorage.setItem(
+'mk_credits',
+JSON.stringify(credits)
+);
+
+document.getElementById('custAmount').value='';
+document.getElementById('custNote').value='';
+
+renderCredits();
+
+let receipt=creditReceiptMessage(
+credits[n],
+a,
+type,
+oldBalance,
+note
+);
+
+if((ph||'').replace(/\D/g,'')){
+openWhatsApp(ph,receipt);
+}else{
+alert(
+type==='due'
+?'उधारी जोड़ दी गई। ग्राहक का मोबाइल नंबर सेव नहीं है।'
+:'जमा रकम हिसाब में जोड़ दी गई। ग्राहक का मोबाइल नंबर सेव नहीं है।'
+);
+}
+}
+
+function quickCredit(key,type){
+
+let n=decodeURIComponent(key);
+
+let a=+(prompt(
+(type==='paid'?'💰 जमा करें — ':'📒 उधारी जोड़ें — ')+
+n+'\nरकम डालें:'
+)||0);
+
+if(a<=0)return;
+
+if(!credits[n])return;
+
+let oldBalance=credits[n].balance;
+
+credits[n].balance +=
+type==='due'?a:-a;
+
+let note=type==='paid'
+?'जमा/वसूली'
+:'उधारी';
+
+credits[n].history.unshift({
+date:new Date().toLocaleString('hi-IN'),
+type,
+amount:a,
+note
+});
+
+localStorage.setItem(
+'mk_credits',
+JSON.stringify(credits)
+);
+
+renderCredits();
+
+let c=credits[n];
+
+if((c.phone||'').replace(/\D/g,'')){
+
+let receipt=creditReceiptMessage(
+c,
+a,
+type,
+oldBalance,
+note
+);
+
+openWhatsApp(c.phone,receipt);
+
+}else{
+
+alert(
+type==='due'
+?'उधारी जोड़ दी गई। मोबाइल नंबर सेव नहीं है।'
+:'जमा हो गया। मोबाइल नंबर सेव नहीं है।'
+);
+}
+}
+
 function renderCredits(){
-  let q=(document.getElementById('creditSearch')?.value||'').toLowerCase().trim();
-  let el=document.getElementById('credits');
-  let arr=Object.values(credits).filter(c=>(c.name||'').toLowerCase().includes(q)||((c.phone||'').includes(q)));
-  if(!arr.length){el.innerHTML='<div class="empty">अभी कोई उधारी खाता नहीं है।</div>';return}
-  arr.sort((a,b)=>b.balance-a.balance);
-  el.innerHTML=arr.map(c=>{
-    const key=encodeURIComponent(c.name), cleared=c.balance<=0;
-    return `<div class="customer">
-      <div class="bill-card-top"><div><b>${esc(c.name)}</b><div class="muted">${esc(c.phone||'मोबाइल सेव नहीं')}</div></div>
-      <div class="balance ${c.balance>0?'positive':'paid'}">${c.balance>0?'लेना है':'जमा'}<br>₹${Math.abs(c.balance).toFixed(2)}</div></div>
-      ${c.history?.[0]?`<div class="muted" style="margin-top:7px">आखिरी एंट्री: ${esc(c.history[0].date)} • ${c.history[0].type==='due'?'उधारी':'जमा'} ₹${Number(c.history[0].amount).toFixed(2)}</div>`:''}
-      <div class="account-actions">
-        <button class="btn secondary" onclick="quickCredit('${key}','due')">📒 उधारी</button>
-        <button class="btn green" onclick="quickCredit('${key}','paid')">💰 जमा</button>
-        <button class="btn secondary" onclick="showCustomer('${key}')">पूरा हिसाब</button>
-        ${cleared?`<button class="btn red" onclick="deleteCredit('${key}')">🗑️ खाता हटाएँ</button>`:''}
-      </div>
-    </div>`;
-  }).join('');
+
+let q=(document.getElementById('creditSearch')?.value||'')
+.toLowerCase()
+.trim();
+
+let el=document.getElementById('credits');
+
+let arr=Object.values(credits).filter(c=>
+(c.name||'').toLowerCase().includes(q)||
+((c.phone||'').includes(q))
+);
+
+if(!arr.length){
+el.innerHTML='<div class="empty">अभी कोई उधारी खाता नहीं है।</div>';
+return;
 }
+
+arr.sort((a,b)=>b.balance-a.balance);
+
+el.innerHTML=arr.map(c=>{
+
+const key=encodeURIComponent(c.name);
+const cleared=c.balance<=0;
+
+return `
+<div class="customer">
+
+<div class="bill-card-top">
+
+<div>
+<b>${esc(c.name)}</b>
+<div class="muted">
+${esc(c.phone||'मोबाइल सेव नहीं')}
+</div>
+</div>
+
+<div class="balance ${c.balance>0?'positive':'paid'}">
+${c.balance>0?'लेना है':'जमा'}<br>
+₹${Math.abs(c.balance).toFixed(2)}
+</div>
+
+</div>
+
+${c.history?.[0]?
+`<div class="muted" style="margin-top:7px">
+आखिरी एंट्री:
+${esc(c.history[0].date)} •
+${c.history[0].type==='due'?'उधारी':'जमा'}
+₹${Number(c.history[0].amount).toFixed(2)}
+</div>`:''
+}
+
+<div class="account-actions">
+
+<button class="btn secondary"
+onclick="quickCredit('${key}','due')">
+📒 उधारी
+</button>
+
+<button class="btn green"
+onclick="quickCredit('${key}','paid')">
+💰 जमा
+</button>
+
+<button class="btn secondary"
+onclick="showCustomer('${key}')">
+पूरा हिसाब
+</button>
+
+${cleared?
+`<button class="btn red"
+onclick="deleteCredit('${key}')">
+🗑️ खाता हटाएँ
+</button>`:''}
+
+</div>
+
+</div>`;
+
+}).join('');
+}
+
 function deleteCredit(key){
-  const n=decodeURIComponent(key), c=credits[n]; if(!c)return;
-  if(c.balance>0){alert('पहले पूरी उधारी जमा करें।');return}
-  if(confirm(n+' का पूरा खाता हटाएँ?\nयह उसका उधारी-जमा इतिहास भी हटा देगा।')){
-    delete credits[n]; localStorage.setItem('mk_credits',JSON.stringify(credits));
-    closeCustomer(); renderCredits(); renderReport();
-  }
+
+const n=decodeURIComponent(key);
+const c=credits[n];
+
+if(!c)return;
+
+if(c.balance>0){
+alert('पहले पूरी उधारी जमा करें।');
+return;
 }
+
+if(confirm(
+n+' का पूरा खाता हटाएँ?\nयह उसका उधारी-जमा इतिहास भी हटा देगा।'
+)){
+
+delete credits[n];
+
+localStorage.setItem(
+'mk_credits',
+JSON.stringify(credits)
+);
+
+closeCustomer();
+renderCredits();
+renderReport();
+}
+}
+
 let activeCustomerKey='';
+
 function showCustomer(key){
-  let n=decodeURIComponent(key),c=credits[n];if(!c)return;
-  activeCustomerKey=n;
-  document.getElementById('modalCustomerName').textContent=c.name;
-  document.getElementById('modalCustomerInfo').innerHTML=`<div class="muted">मोबाइल: ${esc(c.phone||'मोबाइल नंबर सेव नहीं है')}</div><div class="balance ${c.balance>0?'positive':'paid'}" style="font-size:20px;margin-top:6px">${c.balance>0?'अभी लेना है':'अभी जमा'}: ₹${Math.abs(c.balance).toFixed(2)}</div>`;
-  document.getElementById('modalHistory').innerHTML='<h4 style="margin:16px 0 6px">हिसाब</h4>'+((c.history||[]).length?c.history.map(h=>`<div class="history-row"><div>${esc(h.date)}</div><div class="${h.type==='due'?'due':'paid'}">${h.type==='due'?'उधारी':'जमा'}: ₹${Number(h.amount).toFixed(2)}</div>${h.note?`<div class="muted">${esc(h.note)}</div>`:''}</div>`).join(''):'<div class="empty">अभी कोई हिसाब नहीं है।</div>');
-  let hasPhone=!!(c.phone||'').replace(/\D/g,'');
-  document.getElementById('modalWhatsApp').disabled=!hasPhone;
-  document.getElementById('modalSms').disabled=!hasPhone;
-  document.getElementById('modalDeleteWrap').innerHTML=c.balance<=0?`<button class="btn red full" onclick="deleteCredit('${encodeURIComponent(c.name)}')">🗑️ पूरा खाता हटाएँ</button>`:'<div class="muted" style="text-align:center">खाता तभी हटाया जा सकता है जब उधारी पूरी जमा हो जाए।</div>';
-  document.getElementById('customerModal').classList.add('show');
+
+let n=decodeURIComponent(key);
+let c=credits[n];
+
+if(!c)return;
+
+activeCustomerKey=n;
+
+document.getElementById('modalCustomerName').textContent=c.name;
+
+document.getElementById('modalCustomerInfo').innerHTML=`
+
+<div class="muted">
+मोबाइल: ${esc(c.phone||'मोबाइल नंबर सेव नहीं है')}
+</div>
+
+<div class="balance ${c.balance>0?'positive':'paid'}"
+style="font-size:20px;margin-top:6px">
+
+${c.balance>0?'अभी लेना है':'अभी जमा'}:
+₹${Math.abs(c.balance).toFixed(2)}
+
+</div>`;
+
+document.getElementById('modalHistory').innerHTML=
+'<h4 style="margin:16px 0 6px">हिसाब</h4>'+
+((c.history||[]).length?
+
+c.history.map(h=>`
+
+<div class="history-row">
+
+<div>${esc(h.date)}</div>
+
+<div class="${h.type==='due'?'due':'paid'}">
+
+${h.type==='due'?'उधारी':'जमा'}:
+₹${Number(h.amount).toFixed(2)}
+
+</div>
+
+${h.note?
+`<div class="muted">${esc(h.note)}</div>`:''
 }
-function closeCustomer(){document.getElementById('customerModal').classList.remove('show');}
-function customerMessage(c){let lines=['*M.kirana*','ग्राहक: '+c.name];if(c.phone)lines.push('मो.: '+c.phone);lines.push('','वर्तमान उधारी: ₹'+Math.max(c.balance,0).toFixed(2));if(c.balance<0)lines.push('अतिरिक्त जमा: ₹'+Math.abs(c.balance).toFixed(2));lines.push('','हिसाब:');(c.history||[]).slice(0,10).forEach(h=>lines.push((h.type==='due'?'उधारी':'जमा')+' ₹'+Number(h.amount).toFixed(2)+(h.note?' — '+h.note:'')));lines.push('','धन्यवाद - M.kirana');return lines.join('\n');}
-function shareCustomerWhatsApp(){let c=credits[activeCustomerKey];if(!c)return;if(!(c.phone||'').replace(/\D/g,'')){alert('इस ग्राहक का मोबाइल नंबर सेव नहीं है। पहले मोबाइल नंबर सेव करें।');return}let ph=c.phone.replace(/\D/g,'');window.open('https://wa.me/91'+ph+'?text='+encodeURIComponent(customerMessage(c)),'_blank');}
-function shareCustomerSMS(){let c=credits[activeCustomerKey];if(!c)return;if(!(c.phone||'').replace(/\D/g,'')){alert('इस ग्राहक का मोबाइल नंबर सेव नहीं है। पहले मोबाइल नंबर सेव करें।');return}let ph=c.phone.replace(/\D/g,'');window.location.href='sms:'+ph+'?body='+encodeURIComponent(customerMessage(c));}
+
+</div>
+
+`).join(''):
+
+'<div class="empty">अभी कोई हिसाब नहीं है।</div>');
+
+let hasPhone=!!(c.phone||'').replace(/\D/g,'');
+
+document.getElementById('modalWhatsApp').disabled=!hasPhone;
+document.getElementById('modalSms').disabled=!hasPhone;
+
+document.getElementById('modalDeleteWrap').innerHTML=
+c.balance<=0?
+
+`<button class="btn red full"
+onclick="deleteCredit('${encodeURIComponent(c.name)}')">
+🗑️ पूरा खाता हटाएँ
+</button>`:
+
+'<div class="muted" style="text-align:center">खाता तभी हटाया जा सकता है जब उधारी पूरी जमा हो जाए।</div>';
+
+document.getElementById('customerModal')
+.classList.add('show');
+}
+
+function closeCustomer(){
+document.getElementById('customerModal')
+.classList.remove('show');
+}
+
+function creditReceiptMessage(c,amount,type,oldBalance,note){
+
+let newBalance=c.balance;
+
+let title=
+type==='due'
+?'📒 उधारी रसीद'
+:'💵 जमा रसीद';
+
+let transactionLabel=
+type==='due'
+?'उधारी राशि'
+:'जमा राशि';
+
+let lines=[
+'*MANSURI KIRANA*',
+'*AALAM MANSURI*',
+'📞 Mo. 9754083323',
+'━━━━━━━━━━━━━━━━━━',
+'*'+title+'*',
+'',
+'👤 ग्राहक: '+c.name
+];
+
+if(c.phone)
+lines.push('📱 मोबाइल: '+c.phone);
+
+lines.push(
+'📅 दिनांक: '+(c.history?.[0]?.date||new Date().toLocaleString('hi-IN')),
+'',
+'💰 '+transactionLabel+': ₹'+Number(amount).toFixed(2)
+);
+
+if(note)
+lines.push('📝 नोट: '+note);
+
+lines.push(
+'',
+'━━━━━━━━━━━━━━━━━━'
+);
+
+if(type==='due'){
+
+lines.push(
+'📌 पिछला बकाया: ₹'+Math.max(oldBalance,0).toFixed(2),
+'🔴 *कुल बकाया: ₹'+Math.max(newBalance,0).toFixed(2)+'*'
+);
+
+}else{
+
+lines.push(
+'📌 पिछला बकाया: ₹'+Math.max(oldBalance,0).toFixed(2),
+'💚 *शेष बकाया: ₹'+Math.max(newBalance,0).toFixed(2)+'*'
+);
+
+}
+
+lines.push(
+'━━━━━━━━━━━━━━━━━━',
+'',
+'धन्यवाद!',
+'*MANSURI KIRANA*'
+);
+
+return lines.join('\n');
+}
+
+function customerMessage(c){
+
+let latest=c.history?.[0];
+
+if(latest){
+
+return creditReceiptMessage(
+c,
+latest.amount,
+latest.type,
+latest.type==='due'
+?Math.max(0,c.balance-latest.amount)
+:Math.max(0,c.balance+latest.amount),
+latest.note||''
+);
+}
+
+let lines=[
+'*MANSURI KIRANA*',
+'*AALAM MANSURI*',
+'📞 Mo. 9754083323',
+'━━━━━━━━━━━━━━━━━━',
+'*📒 ग्राहक हिसाब*',
+'',
+'👤 ग्राहक: '+c.name
+];
+
+if(c.phone)
+lines.push('📱 मोबाइल: '+c.phone);
+
+lines.push(
+'',
+'📌 *वर्तमान बकाया: ₹'+Math.max(c.balance,0).toFixed(2)+'*'
+);
+
+if(c.balance<0)
+lines.push(
+'💚 अतिरिक्त जमा: ₹'+Math.abs(c.balance).toFixed(2)
+);
+
+lines.push(
+'',
+'━━━━━━━━━━━━━━━━━━',
+'धन्यवाद!',
+'*MANSURI KIRANA*'
+);
+
+return lines.join('\n');
+}
+
+function openWhatsApp(phone,message){
+
+let ph=(phone||'').replace(/\D/g,'');
+
+if(!ph){
+alert('ग्राहक का मोबाइल नंबर सेव नहीं है।');
+return;
+}
+
+let url=
+'https://wa.me/91'+
+ph+
+'?text='+
+encodeURIComponent(message);
+
+window.location.href=url;
+}
+
+function shareCustomerWhatsApp(){
+
+let c=credits[activeCustomerKey];
+
+if(!c)return;
+
+if(!(c.phone||'').replace(/\D/g,'')){
+alert('इस ग्राहक का मोबाइल नंबर सेव नहीं है। पहले मोबाइल नंबर सेव करें।');
+return;
+}
+
+openWhatsApp(
+c.phone,
+customerMessage(c)
+);
+}
+
+function shareCustomerSMS(){
+
+let c=credits[activeCustomerKey];
+
+if(!c)return;
+
+if(!(c.phone||'').replace(/\D/g,'')){
+alert('इस ग्राहक का मोबाइल नंबर सेव नहीं है। पहले मोबाइल नंबर सेव करें।');
+return;
+}
+
+let ph=c.phone.replace(/\D/g,'');
+
+window.location.href=
+'sms:'+ph+
+'?body='+
+encodeURIComponent(customerMessage(c));
+}
+
 function renderHistory(){
-  let el=document.getElementById('historyList');
-  let q=(document.getElementById('historySearch')?.value||'').toLowerCase().trim();
-  let arr=bills.filter(b=>(b.customer||'').toLowerCase().includes(q)||(b.phone||'').includes(q));
-  document.getElementById('billCountPill').textContent=arr.length+' बिल';
-  if(!arr.length){el.innerHTML='<div class="empty">कोई सेव बिल नहीं मिला।</div>';return}
-  el.innerHTML=arr.slice(0,200).map(b=>`<div class="bill-card">
-    <div class="bill-card-top"><div><b>${esc(b.customer)}</b><div class="muted">${esc(b.date)}${b.phone?' • '+esc(b.phone):''}</div></div><div class="bill-total-small">₹${Number(b.total).toFixed(2)}</div></div>
-    <div class="muted" style="margin-top:7px">${b.items.length} सामान • ${b.items.slice(0,3).map(x=>esc(x.name)).join(', ')}${b.items.length>3?'…':''}</div>
-    <div class="bill-actions">
-      <button class="btn secondary" onclick="viewBill('${b.id}')">👁️ बिल देखें</button>
-      <button class="btn" onclick="printBillById('${b.id}')">🖨️ प्रिंट</button>
-      <button class="btn green" onclick="shareBillById('${b.id}')">📲 WhatsApp</button>
-      <button class="btn red" onclick="deleteBill('${b.id}')">🗑️ हटाएँ</button>
-    </div>
-  </div>`).join('');
+
+let el=document.getElementById('historyList');
+
+let q=(document.getElementById('historySearch')?.value||'')
+.toLowerCase()
+.trim();
+
+let arr=bills.filter(b=>
+(b.customer||'').toLowerCase().includes(q)||
+(b.phone||'').includes(q)
+);
+
+document.getElementById('billCountPill').textContent=
+arr.length+' बिल';
+
+if(!arr.length){
+el.innerHTML='<div class="empty">कोई सेव बिल नहीं मिला।</div>';
+return;
 }
-function findBill(id){return bills.find(b=>String(b.id)===String(id));}
+
+el.innerHTML=arr.slice(0,200).map(b=>`
+
+<div class="bill-card">
+
+<div class="bill-card-top">
+
+<div>
+<b>${esc(b.customer)}</b>
+<div class="muted">
+${esc(b.date)}
+${b.phone?' • '+esc(b.phone):''}
+</div>
+</div>
+
+<div class="bill-total-small">
+₹${Number(b.total).toFixed(2)}
+</div>
+
+</div>
+
+<div class="muted" style="margin-top:7px">
+${b.items.length} सामान •
+${b.items.slice(0,3).map(x=>esc(x.name)).join(', ')}
+${b.items.length>3?'…':''}
+</div>
+
+<div class="bill-actions">
+
+<button class="btn secondary"
+onclick="viewBill('${b.id}')">
+👁️ बिल देखें
+</button>
+
+<button class="btn"
+onclick="printBillById('${b.id}')">
+🖨️ प्रिंट
+</button>
+
+<button class="btn green"
+onclick="shareBillById('${b.id}')">
+📲 WhatsApp
+</button>
+
+<button class="btn red"
+onclick="deleteBill('${b.id}')">
+🗑️ हटाएँ
+</button>
+
+</div>
+
+</div>
+
+`).join('');
+}
+
+function findBill(id){
+return bills.find(b=>String(b.id)===String(id));
+}
+
 let activeBillId='';
+
 function viewBill(id){
-  const b=findBill(id); if(!b)return; activeBillId=String(id);
-  document.getElementById('billModalTitle').textContent='बिल विवरण';
-  document.getElementById('billModalBody').innerHTML=`<div style="text-align:center;font-weight:900;font-size:24px;margin-bottom:8px">M.kirana</div>
-  <div class="muted" style="text-align:center">${esc(b.date)}</div>
-  <div style="margin:12px 0;padding:10px;background:#f8fafc;border-radius:12px"><b>ग्राहक:</b> ${esc(b.customer)}${b.phone?`<br><b>मोबाइल:</b> ${esc(b.phone)}`:''}</div>
-  <table><tr><th>क्र.</th><th>सामान</th><th>मात्रा</th><th>रेट</th><th>रकम</th></tr>${b.items.map((x,i)=>`<tr><td>${i+1}.</td><td>${esc(x.name)}</td><td>${x.qty} ${esc(x.unit||'नग')}</td><td>₹${Number(x.price).toFixed(2)}</td><td>₹${(x.qty*x.price).toFixed(2)}</td></tr>`).join('')}</table>
-  <div class="total" style="font-size:22px">₹${Number(b.total).toFixed(2)}</div>`;
-  document.getElementById('billModal').classList.add('show');
+
+const b=findBill(id);
+
+if(!b)return;
+
+activeBillId=String(id);
+
+document.getElementById('billModalTitle')
+.textContent='बिल विवरण';
+
+document.getElementById('billModalBody').innerHTML=`
+
+<div style="text-align:center;font-weight:900;font-size:24px;margin-bottom:3px">
+MANSURI KIRANA
+</div>
+
+<div style="text-align:center;font-weight:700;font-size:14px;margin-bottom:3px">
+AALAM MANSURI • 9754083323
+</div>
+
+<div class="muted" style="text-align:center">
+${esc(b.date)}
+</div>
+
+<div style="margin:12px 0;padding:10px;background:#f8fafc;border-radius:12px">
+
+<b>ग्राहक:</b> ${esc(b.customer)}
+
+${b.phone?
+`<br><b>मोबाइल:</b> ${esc(b.phone)}`:''}
+
+</div>
+
+<table>
+
+<tr>
+<th>क्र.</th>
+<th>सामान</th>
+<th>मात्रा</th>
+<th>रेट</th>
+<th>रकम</th>
+</tr>
+
+${b.items.map((x,i)=>`
+
+<tr>
+<td>${i+1}.</td>
+<td>${esc(x.name)}</td>
+<td>${x.qty} ${esc(x.unit||'नग')}</td>
+<td>₹${Number(x.price).toFixed(2)}</td>
+<td>₹${(x.qty*x.price).toFixed(2)}</td>
+</tr>
+
+`).join('')}
+
+</table>
+
+<div class="total" style="font-size:22px">
+₹${Number(b.total).toFixed(2)}
+</div>
+
+<div style="text-align:center;font-size:13px">
+धन्यवाद! फिर पधारें।
+</div>
+`;
+
+document.getElementById('billModal')
+.classList.add('show');
 }
-function closeBillModal(){document.getElementById('billModal').classList.remove('show')}
-function printActiveBill(){const b=findBill(activeBillId);if(b){closeBillModal();printBill(b)}}
-function shareActiveBill(){const b=findBill(activeBillId);if(b)shareWhatsApp(b)}
-function printBillById(id){const b=findBill(id);if(b)printBill(b)}
-function shareBillById(id){const b=findBill(id);if(b)shareWhatsApp(b)}
+
+function closeBillModal(){
+document.getElementById('billModal')
+.classList.remove('show');
+}
+
+function printActiveBill(){
+
+const b=findBill(activeBillId);
+
+if(b){
+closeBillModal();
+printBill(b);
+}
+}
+
+function shareActiveBill(){
+
+const b=findBill(activeBillId);
+
+if(b)
+shareWhatsApp(b);
+}
+
+function printBillById(id){
+
+const b=findBill(id);
+
+if(b)
+printBill(b);
+}
+
+function shareBillById(id){
+
+const b=findBill(id);
+
+if(b)
+shareWhatsApp(b);
+}
+
 function deleteBill(id){
-  if(!confirm('यह सेव किया हुआ बिल हटाना है?'))return;
-  bills=bills.filter(b=>String(b.id)!==String(id));
-  localStorage.setItem('mk_bills',JSON.stringify(bills));
-  renderHistory(); renderReport();
+
+if(!confirm('यह सेव किया हुआ बिल हटाना है?'))
+return;
+
+bills=bills.filter(
+b=>String(b.id)!==String(id)
+);
+
+localStorage.setItem(
+'mk_bills',
+JSON.stringify(bills)
+);
+
+renderHistory();
+renderReport();
 }
-function clearHistory(){if(confirm('सारी बिल हिस्ट्री हटानी है?')){bills=[];localStorage.removeItem('mk_bills');renderHistory()}}
-function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function saveStock(){let n=document.getElementById('stockName').value.trim();if(!n){alert('सामान का नाम डालें।');return}stock[n]={name:n,unit:document.getElementById('stockUnit').value,qty:+document.getElementById('stockQty').value||0,price:+document.getElementById('stockPrice').value||0};localStorage.setItem('mk_stock',JSON.stringify(stock));document.getElementById('stockName').value='';document.getElementById('stockQty').value='';document.getElementById('stockPrice').value='';renderStock();}
-function renderStock(){let q=(document.getElementById('stockSearch')?.value||'').toLowerCase();let arr=Object.values(stock).filter(x=>x.name.toLowerCase().includes(q));let el=document.getElementById('stockList');if(!arr.length){el.innerHTML='<div class="empty">स्टॉक खाली है।</div>';return}el.innerHTML=arr.map(x=>`<div class="customer"><b>${esc(x.name)}</b><div>स्टॉक: <strong>${x.qty} ${esc(x.unit)}</strong> ${x.qty<=5?'<span class="positive">⚠️ कम स्टॉक</span>':''}</div><div class="muted">बिक्री रेट: ₹${Number(x.price).toFixed(2)}</div><button class="btn secondary" onclick="useStock('${encodeURIComponent(x.name)}')">बिल में जोड़ें</button> <button class="btn red" onclick="deleteStock('${encodeURIComponent(x.name)}')">हटाएँ</button></div>`).join('');}
-function useStock(k){let x=stock[decodeURIComponent(k)];addItem(x.name,1,x.price,x.unit);showTab('bill',document.querySelector('nav button'));}
-function deleteStock(k){let n=decodeURIComponent(k);if(confirm(n+' हटाएँ?')){delete stock[n];localStorage.setItem('mk_stock',JSON.stringify(stock));renderStock();}}
-function shareWhatsApp(b){let lines=['*M.kirana*','दिनांक: '+b.date,'ग्राहक: '+b.customer];if(b.phone)lines.push('मो.: '+b.phone);lines.push('');b.items.forEach((x,i)=>lines.push((i+1)+'. '+x.name+' — '+x.qty+' '+x.unit+' × ₹'+Number(x.price).toFixed(2)+' = ₹'+(x.qty*x.price).toFixed(2)));lines.push('','*कुल: ₹'+b.total.toFixed(2)+'*');let text=encodeURIComponent(lines.join('\\n'));let ph=(b.phone||'').replace(/\D/g,'');let url=ph?'https://wa.me/91'+ph+'?text='+text:'https://wa.me/?text='+text;window.open(url,'_blank');}
-function renderReport(){let now=new Date(),today=now.toLocaleDateString('en-CA'),ym=now.toISOString().slice(0,7),td=0,md=0,tb=0;for(let b of bills){let d=new Date(b.id);if(d.toLocaleDateString('en-CA')===today){td+=b.total;tb++;}if(d.toISOString().slice(0,7)===ym)md+=b.total;}document.getElementById('todaySales').textContent=td.toFixed(2);document.getElementById('monthSales').textContent=md.toFixed(2);document.getElementById('todayBills').textContent=tb;document.getElementById('allBills').textContent=bills.length;let due=Object.values(credits).reduce((s,c)=>s+Math.max(0,c.balance),0);document.getElementById('totalCredit').textContent='₹'+due.toFixed(2);}
-function loadSettings(){document.getElementById('saveCustomerPhone').checked=!!settings.saveCustomerPhone;document.getElementById('pinEnabled').checked=!!settings.pinEnabled;document.getElementById('newPin').value='';togglePhoneFields();}
-function togglePhoneFields(){let on=!!document.getElementById('saveCustomerPhone').checked;document.getElementById('billPhoneWrap').style.display=on?'block':'none';document.getElementById('creditPhoneWrap').style.display=on?'block':'none';}
-function saveSettings(){let pin=document.getElementById('newPin').value.trim(),enabled=document.getElementById('pinEnabled').checked;if(enabled&&!/^\\d{4,6}$/.test(pin)&&!settings.pin){alert('4 से 6 अंक का PIN डालें।');return}settings.saveCustomerPhone=document.getElementById('saveCustomerPhone').checked;settings.pinEnabled=enabled;if(pin)settings.pin=pin;localStorage.setItem('mk_settings',JSON.stringify(settings));togglePhoneFields();alert('सेटिंग सेव हो गई।');}
-function exportData(){let data={bills,credits,stock,settings},a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:'application/json'}));a.download='m-kirana-backup.json';a.click();}
-function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);bills=d.bills||[];credits=d.credits||{};stock=d.stock||{};settings=d.settings||settings;localStorage.setItem('mk_bills',JSON.stringify(bills));localStorage.setItem('mk_credits',JSON.stringify(credits));localStorage.setItem('mk_stock',JSON.stringify(stock));localStorage.setItem('mk_settings',JSON.stringify(settings));alert('Backup वापस आ गया।');location.reload();}catch(_){alert('Backup फाइल सही नहीं है।')}};r.readAsText(f);}
-function installApp(){if(deferredInstallPrompt){deferredInstallPrompt.prompt();deferredInstallPrompt.userChoice.then(()=>{deferredInstallPrompt=null;});}else{alert('पहले इस App को HTTPS वाली website पर खोलें। फिर Chrome के menu में Install app / Add to Home screen चुनें।');}}
-function appLock(){let st=JSON.parse(localStorage.getItem('mk_settings')||'{}');if(st.pinEnabled&&st.pin){let p=prompt('M.kirana खोलने के लिए PIN डालें');if(p!==st.pin){document.body.innerHTML='<div style="padding:40px;text-align:center;font-family:sans-serif"><h2>🔒 App Locked</h2><p>गलत PIN। ऐप बंद करें और फिर खोलें।</p></div>';}}}
+
+function clearHistory(){
+
+if(confirm('सारी बिल हिस्ट्री हटानी है?')){
+
+bills=[];
+
+localStorage.removeItem('mk_bills');
+
+renderHistory();
+}
+}
+
+function esc(s){
+
+return String(s??'').replace(
+/[&<>"']/g,
+m=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#39;'
+}[m])
+);
+}
+
+function saveStock(){
+
+let n=document.getElementById('stockName')
+.value.trim();
+
+if(!n){
+alert('सामान का नाम डालें।');
+return;
+}
+
+stock[n]={
+name:n,
+unit:document.getElementById('stockUnit').value,
+qty:+document.getElementById('stockQty').value||0,
+price:+document.getElementById('stockPrice').value||0
+};
+
+localStorage.setItem(
+'mk_stock',
+JSON.stringify(stock)
+);
+
+document.getElementById('stockName').value='';
+document.getElementById('stockQty').value='';
+document.getElementById('stockPrice').value='';
+
+renderStock();
+}
+
+function renderStock(){
+
+let q=(document.getElementById('stockSearch')?.value||'')
+.toLowerCase();
+
+let arr=Object.values(stock)
+.filter(x=>x.name.toLowerCase().includes(q));
+
+let el=document.getElementById('stockList');
+
+if(!arr.length){
+el.innerHTML='<div class="empty">स्टॉक खाली है।</div>';
+return;
+}
+
+el.innerHTML=arr.map(x=>`
+
+<div class="customer">
+
+<b>${esc(x.name)}</b>
+
+<div>
+स्टॉक:
+<strong>${x.qty} ${esc(x.unit)}</strong>
+
+${x.qty<=5?
+'<span class="positive">⚠️ कम स्टॉक</span>':''}
+
+</div>
+
+<div class="muted">
+बिक्री रेट: ₹${Number(x.price).toFixed(2)}
+</div>
+
+<button class="btn secondary"
+onclick="useStock('${encodeURIComponent(x.name)}')">
+बिल में जोड़ें
+</button>
+
+<button class="btn red"
+onclick="deleteStock('${encodeURIComponent(x.name)}')">
+हटाएँ
+</button>
+
+</div>
+
+`).join('');
+}
+
+function useStock(k){
+
+let x=stock[decodeURIComponent(k)];
+
+addItem(
+x.name,
+1,
+x.price,
+x.unit
+);
+
+showTab(
+'bill',
+document.querySelector('nav button')
+);
+}
+
+function deleteStock(k){
+
+let n=decodeURIComponent(k);
+
+if(confirm(n+' हटाएँ?')){
+
+delete stock[n];
+
+localStorage.setItem(
+'mk_stock',
+JSON.stringify(stock)
+);
+
+renderStock();
+}
+}
+
+function shareWhatsApp(b){
+
+let lines=[
+'*MANSURI KIRANA*',
+'*AALAM MANSURI*',
+'📞 Mo. 9754083323',
+'━━━━━━━━━━━━━━━━━━',
+'*🧾 बिक्री बिल*',
+'',
+'📅 दिनांक: '+b.date,
+'👤 ग्राहक: '+b.customer
+];
+
+if(b.phone)
+lines.push('📱 मोबाइल: '+b.phone);
+
+lines.push(
+'',
+'━━━━━━━━━━━━━━━━━━',
+'*क्र. सामान | मात्रा | रेट | राशि*',
+'━━━━━━━━━━━━━━━━━━'
+);
+
+b.items.forEach((x,i)=>{
+
+lines.push(
+(i+1)+'. '+
+x.name+
+' | '+
+x.qty+' '+x.unit+
+' | ₹'+Number(x.price).toFixed(2)+
+' | ₹'+(x.qty*x.price).toFixed(2)
+);
+
+});
+
+lines.push(
+'━━━━━━━━━━━━━━━━━━',
+'💰 *कुल राशि: ₹'+Number(b.total).toFixed(2)+'*',
+'━━━━━━━━━━━━━━━━━━',
+'',
+'धन्यवाद! फिर पधारें।',
+'*MANSURI KIRANA*'
+);
+
+let text=lines.join('\n');
+
+let ph=(b.phone||'').replace(/\D/g,'');
+
+let url=ph
+?'https://wa.me/91'+ph+'?text='+encodeURIComponent(text)
+:'https://wa.me/?text='+encodeURIComponent(text);
+
+window.location.href=url;
+}
+
+function renderReport(){
+
+let now=new Date();
+
+let today=now.toLocaleDateString('en-CA');
+
+let ym=now.toISOString().slice(0,7);
+
+let td=0,md=0,tb=0;
+
+for(let b of bills){
+
+let d=new Date(b.id);
+
+if(d.toLocaleDateString('en-CA')===today){
+td+=b.total;
+tb++;
+}
+
+if(d.toISOString().slice(0,7)===ym)
+md+=b.total;
+}
+
+document.getElementById('todaySales')
+.textContent=td.toFixed(2);
+
+document.getElementById('monthSales')
+.textContent=md.toFixed(2);
+
+document.getElementById('todayBills')
+.textContent=tb;
+
+document.getElementById('allBills')
+.textContent=bills.length;
+
+let due=Object.values(credits)
+.reduce(
+(s,c)=>s+Math.max(0,c.balance),
+0
+);
+
+document.getElementById('totalCredit')
+.textContent='₹'+due.toFixed(2);
+}
+
+function loadSettings(){
+
+document.getElementById('saveCustomerPhone')
+.checked=!!settings.saveCustomerPhone;
+
+document.getElementById('pinEnabled')
+.checked=!!settings.pinEnabled;
+
+document.getElementById('newPin').value='';
+
+togglePhoneFields();
+}
+
+function togglePhoneFields(){
+
+let on=!!document.getElementById('saveCustomerPhone').checked;
+
+document.getElementById('billPhoneWrap')
+.style.display=on?'block':'none';
+
+document.getElementById('creditPhoneWrap')
+.style.display=on?'block':'none';
+}
+
+function saveSettings(){
+
+let pin=document.getElementById('newPin')
+.value.trim();
+
+let enabled=document.getElementById('pinEnabled')
+.checked;
+
+if(enabled&&!/^\d{4,6}$/.test(pin)&&!settings.pin){
+
+alert('4 से 6 अंक का PIN डालें।');
+return;
+}
+
+settings.saveCustomerPhone=
+document.getElementById('saveCustomerPhone').checked;
+
+settings.pinEnabled=enabled;
+
+if(pin)
+settings.pin=pin;
+
+localStorage.setItem(
+'mk_settings',
+JSON.stringify(settings)
+);
+
+togglePhoneFields();
+
+alert('सेटिंग सेव हो गई।');
+}
+
+function exportData(){
+
+let data={
+bills,
+credits,
+stock,
+settings
+};
+
+let a=document.createElement('a');
+
+a.href=URL.createObjectURL(
+new Blob(
+[JSON.stringify(data)],
+{type:'application/json'}
+)
+);
+
+a.download='mansuri-kirana-backup.json';
+
+a.click();
+}
+
+function importData(e){
+
+let f=e.target.files[0];
+
+if(!f)return;
+
+let r=new FileReader();
+
+r.onload=()=>{
+
+try{
+
+let d=JSON.parse(r.result);
+
+bills=d.bills||[];
+credits=d.credits||{};
+stock=d.stock||{};
+settings=d.settings||settings;
+
+localStorage.setItem(
+'mk_bills',
+JSON.stringify(bills)
+);
+
+localStorage.setItem(
+'mk_credits',
+JSON.stringify(credits)
+);
+
+localStorage.setItem(
+'mk_stock',
+JSON.stringify(stock)
+);
+
+localStorage.setItem(
+'mk_settings',
+JSON.stringify(settings)
+);
+
+alert('Backup वापस आ गया।');
+
+location.reload();
+
+}catch(_){
+
+alert('Backup फाइल सही नहीं है।');
+}
+};
+
+r.readAsText(f);
+}
+
+function installApp(){
+
+if(deferredInstallPrompt){
+
+deferredInstallPrompt.prompt();
+
+deferredInstallPrompt.userChoice.then(()=>{
+deferredInstallPrompt=null;
+});
+
+}else{
+
+alert(
+'पहले इस App को HTTPS वाली website पर खोलें। फिर Chrome के menu में Install app / Add to Home screen चुनें।'
+);
+}
+}
+
+function appLock(){
+
+let st=JSON.parse(
+localStorage.getItem('mk_settings')||'{}'
+);
+
+if(st.pinEnabled&&st.pin){
+
+let p=prompt(
+'MANSURI KIRANA खोलने के लिए PIN डालें'
+);
+
+if(p!==st.pin){
+
+document.body.innerHTML=`
+<div style="padding:40px;text-align:center;font-family:sans-serif">
+<h2>🔒 App Locked</h2>
+<p>गलत PIN। ऐप बंद करें और फिर खोलें।</p>
+</div>`;
+}
+}
+}
+
 addItem();
+
 loadSettings();
+
 appLock();
+
 </script>
+
 <script>
-if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{})); }
-let deferredInstallPrompt;
-window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredInstallPrompt=e; });
-</script>
-  <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker.js");
-  });
+
+if('serviceWorker' in navigator){
+
+window.addEventListener(
+'load',
+()=>navigator.serviceWorker
+.register('sw.js')
+.catch(()=>{})
+);
 }
-  </script>
-</body></html>
+
+let deferredInstallPrompt;
+
+window.addEventListener(
+'beforeinstallprompt',
+e=>{
+e.preventDefault();
+deferredInstallPrompt=e;
+}
+);
+
+</script>
+
+<script>
+
+if("serviceWorker" in navigator){
+
+window.addEventListener(
+"load",
+()=>{
+navigator.serviceWorker
+.register("service-worker.js")
+.catch(()=>{});
+}
+);
+
+}
+
+</script>
+
+</body>
+</html>
