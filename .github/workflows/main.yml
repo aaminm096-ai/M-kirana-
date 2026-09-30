@@ -15,6 +15,19 @@ jobs:
         run: |
           mkdir -p app/src/main/java/com/mansuri/kirana
           mkdir -p app/src/main/res/values
+          mkdir -p app/src/main/assets
+
+          # आपकी website की files APK के अंदर डालना
+          find . -maxdepth 1 -type f \( \
+            -name "*.html" -o \
+            -name "*.js" -o \
+            -name "*.css" -o \
+            -name "*.json" -o \
+            -name "*.png" -o \
+            -name "*.jpg" -o \
+            -name "*.jpeg" -o \
+            -name "*.svg" \
+          \) -exec cp {} app/src/main/assets/ \;
 
           cat > settings.gradle <<'EOF'
           pluginManagement {
@@ -43,6 +56,11 @@ jobs:
           }
           EOF
 
+          cat > gradle.properties <<'EOF'
+          android.useAndroidX=true
+          android.enableJetifier=true
+          EOF
+
           cat > app/build.gradle <<'EOF'
           plugins {
               id 'com.android.application'
@@ -56,15 +74,30 @@ jobs:
                   applicationId "com.mansuri.kirana"
                   minSdk 23
                   targetSdk 35
-                  versionCode 1
-                  versionName "1.0"
+                  versionCode 2
+                  versionName "2.0"
               }
+          }
+
+          dependencies {
+              implementation 'androidx.webkit:webkit:1.12.1'
           }
           EOF
 
           cat > app/src/main/res/values/strings.xml <<'EOF'
           <resources>
               <string name="app_name">MANSURI KIRANA</string>
+          </resources>
+          EOF
+
+          cat > app/src/main/res/values/styles.xml <<'EOF'
+          <resources>
+              <style name="AppTheme"
+                  parent="android:style/Theme.Material.Light.NoActionBar">
+                  <item name="android:fontFamily">sans</item>
+                  <item name="android:colorAccent">#111827</item>
+                  <item name="android:windowActionModeOverlay">true</item>
+              </style>
           </resources>
           EOF
 
@@ -76,7 +109,8 @@ jobs:
               <application
                   android:theme="@style/AppTheme"
                   android:label="MANSURI KIRANA"
-                  android:usesCleartextTraffic="true">
+                  android:usesCleartextTraffic="true"
+                  android:hardwareAccelerated="true">
 
                   <activity
                       android:name=".MainActivity"
@@ -88,19 +122,10 @@ jobs:
                       </intent-filter>
 
                   </activity>
+
               </application>
 
           </manifest>
-          EOF
-
-          cat > app/src/main/res/values/styles.xml <<'EOF'
-          <resources>
-              <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
-                  <item name="android:fontFamily">sans</item>
-                  <item name="android:colorAccent">#111827</item>
-                  <item name="android:windowActionModeOverlay">true</item>
-              </style>
-          </resources>
           EOF
 
           cat > app/src/main/java/com/mansuri/kirana/MainActivity.java <<'EOF'
@@ -108,11 +133,19 @@ jobs:
 
           import android.app.Activity;
           import android.os.Bundle;
+          import android.content.Intent;
+          import android.net.Uri;
+          import android.webkit.WebResourceRequest;
+          import android.webkit.WebResourceResponse;
           import android.webkit.WebSettings;
           import android.webkit.WebView;
           import android.webkit.WebViewClient;
 
+          import androidx.webkit.WebViewAssetLoader;
+
           public class MainActivity extends Activity {
+
+              private WebViewAssetLoader assetLoader;
 
               @Override
               protected void onCreate(Bundle savedInstanceState) {
@@ -121,14 +154,90 @@ jobs:
                   WebView webView = new WebView(this);
                   setContentView(webView);
 
-                  webView.setWebViewClient(new WebViewClient());
-
                   WebSettings settings = webView.getSettings();
+
                   settings.setJavaScriptEnabled(true);
                   settings.setDomStorageEnabled(true);
                   settings.setDatabaseEnabled(true);
+                  settings.setAllowFileAccess(false);
+                  settings.setAllowContentAccess(false);
+                  settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 
-                  webView.loadUrl("https://aaminm096-ai.github.io/M-kirana-/");
+                  assetLoader = new WebViewAssetLoader.Builder()
+                          .addPathHandler(
+                                  "/assets/",
+                                  new WebViewAssetLoader.AssetsPathHandler(this)
+                          )
+                          .build();
+
+                  webView.setWebViewClient(new WebViewClient() {
+
+                      @Override
+                      public WebResourceResponse shouldInterceptRequest(
+                              WebView view,
+                              WebResourceRequest request) {
+
+                          return assetLoader.shouldInterceptRequest(
+                                  request.getUrl()
+                          );
+                      }
+
+                      @Override
+                      public WebResourceResponse shouldInterceptRequest(
+                              WebView view,
+                              String url) {
+
+                          return assetLoader.shouldInterceptRequest(
+                                  Uri.parse(url)
+                          );
+                      }
+
+                      @Override
+                      public boolean shouldOverrideUrlLoading(
+                              WebView view,
+                              WebResourceRequest request) {
+
+                          return openExternalLink(
+                                  request.getUrl().toString()
+                          );
+                      }
+
+                      @Override
+                      public boolean shouldOverrideUrlLoading(
+                              WebView view,
+                              String url) {
+
+                          return openExternalLink(url);
+                      }
+
+                      private boolean openExternalLink(String url) {
+
+                          if (url.startsWith("whatsapp://")
+                                  || url.startsWith("https://wa.me/")
+                                  || url.startsWith("https://api.whatsapp.com/")) {
+
+                              try {
+                                  Intent intent = new Intent(
+                                          Intent.ACTION_VIEW,
+                                          Uri.parse(url)
+                                  );
+
+                                  startActivity(intent);
+                                  return true;
+
+                              } catch (Exception e) {
+
+                                  return true;
+                              }
+                          }
+
+                          return false;
+                      }
+                  });
+
+                  webView.loadUrl(
+                          "https://appassets.androidplatform.net/assets/index.html"
+                  );
               }
           }
           EOF
@@ -140,5 +249,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: MANSURI-KIRANA-APK
+          name: MANSURI-KIRANA-APK-v2
           path: app/build/outputs/apk/debug/app-debug.apk
